@@ -1,0 +1,26 @@
+{
+    "hosts":[
+        {"name":"PPC","ip":"10.10.0.4/16","mac":"00:00:00:00:00:04"},
+        {"name":"POI","ip":"10.10.0.5/16","mac":"00:00:00:00:00:05","ip_2":"10.20.0.5/16", "run_linker":true},
+        {"name":"LV0101","ip":"10.10.1.1/16","mac":"00:00:00:00:01:01","ip_2":"10.20.1.1/16", "run_linker":true},
+        {"name":"LV0102","ip":"10.10.1.2/16","mac":"00:00:00:00:01:02","ip_2":"10.20.1.2/16", "run_linker":true}
+    ],
+    "switches":[
+        {"name":"sPOI"},
+        {"name":"sLV0102"},
+        {"name":"sLV0101"},
+        {"name":"sEEMU", "interface":"enp0s8"}
+    ],
+    "links":[
+        {"node_j":"PPC", "node_k":"sPOI"},
+        {"node_j":"POI", "node_k":"sPOI"},
+        {"node_j":"sLV0101", "node_k":"sPOI", "delay":"20ms", "jitter":"10ms","loss":20},
+        {"node_j":"sLV0102", "node_k":"sLV0101"},
+        {"node_j":"LV0101", "node_k":"sLV0101"},
+        {"node_j":"LV0102", "node_k":"sLV0102"},
+        {"node_j":"POI", "node_k":"sEEMU"},
+        {"node_j":"LV0101", "node_k":"sEEMU"},
+        {"node_j":"LV0102", "node_k":"sEEMU"}
+    ]
+
+}
